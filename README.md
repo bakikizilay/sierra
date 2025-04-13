@@ -1,0 +1,304 @@
+g<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sierra Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --discord-blurple: #5865F2;
+            --discord-green: #57F287;
+            --discord-dark: #23272A;
+            --discord-light: #FFFFFF;
+            --pink-accent: #FF9EC5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #1a0a1a;
+            color: var(--discord-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 158, 197, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 70%, rgba(88, 101, 242, 0.15) 0%, transparent 50%);
+        }
+        
+        .server-card {
+            background: rgba(35, 39, 42, 0.9);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 550px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 158, 197, 0.2);
+        }
+        
+        .server-banner {
+            height: 200px;
+            background: url('https://media.discordapp.net/attachments/1354849054873354303/1360747600567079174/sierra_hdd2025krmz.jpg?ex=67fc3e75&is=67faecf5&hm=cd2fcb077560a7f5dd7fbae36e3e69c92a89a3e783412a8888033f05c1e1757c&') center/cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .server-icon-container {
+            position: absolute;
+            bottom: -50px;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 5px solid var(--discord-dark);
+            background-color: var(--discord-dark);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        
+        .server-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .server-content {
+            padding: 80px 30px 30px;
+        }
+        
+        .server-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--pink-accent);
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 158, 197, 0.5);
+        }
+        
+        .server-members {
+            color: #b9bbbe;
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .server-description {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            border-left: 3px solid var(--pink-accent);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .feature {
+            background-color: rgba(255, 158, 197, 0.1);
+            border: 1px solid var(--pink-accent);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: var(--pink-accent);
+        }
+        
+        .feature i {
+            margin-right: 8px;
+        }
+        
+        .join-button {
+            background: linear-gradient(45deg, var(--pink-accent), var(--discord-blurple));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 30px;
+            display: block;
+            text-align: center;
+        }
+        
+        .join-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 158, 197, 0.4);
+        }
+        
+        .rules-section {
+            margin-top: 30px;
+        }
+        
+        .section-title {
+            color: var(--pink-accent);
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 5px rgba(255, 158, 197, 0.3);
+        }
+        
+        .rules-list {
+            list-style-type: none;
+            margin-bottom: 25px;
+        }
+        
+        .rules-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .rules-list li:before {
+            content: "•";
+            color: var(--pink-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 20px;
+            flex-shrink: 0;
+        }
+        
+        .rule-content {
+            flex: 1;
+        }
+        
+        .rule-highlight {
+            color: var(--pink-accent);
+            font-weight: bold;
+        }
+        
+        .floating-icons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .floating-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pink-accent);
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #72767D;
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="server-card">
+        <div class="server-banner">
+            <div class="floating-icons">
+                <div class="floating-icon"><i class="fas fa-heart"></i></div>
+                <div class="floating-icon"><i class="fas fa-star"></i></div>
+                <div class="floating-icon"><i class="fas fa-gem"></i></div>
+            </div>
+            <div class="server-icon-container">
+                <img src="https://media.discordapp.net/attachments/1354849054873354303/1360747574813786252/sierrapembe_gif.gif?ex=67fc3e6f&is=67faecef&hm=4cddb5b3d4b01ff1fc33bb91c60abd898bbd8a1e0acb843dcc4a81eb4a6436b2&" alt="Sunucu İkonu" class="server-icon">
+            </div>
+        </div>
+        
+        <div class="server-content">
+            <h1 class="server-name">SIERRA COMMUNITY</h1>
+            <div class="server-members">
+                <i class="fas fa-users"></i> 1,000+ Üye | <i class="fas fa-star"></i> 150+ Çevrimiçi
+            </div>
+            
+            <div class="server-description">
+                Herkese merhaba, 2017'den beri faaliyet gösteren sunucumuzda bolca etkinlik, sohbet ve yapabileceğiniz çeşitli aktiviteler bulunuyor. Hem eğlenip hem de aktivitelere katılarak hediyeler kazanabilirsiniz. Sunucumuzda geçirdiğiniz her anı daha keyifli hale gelmesini hedefliyoruz.
+            </div>
+            
+            <div class="features">
+                <div class="feature"><i class="fas fa-gamepad"></i> Oyun Etkinlikleri</div>
+                <div class="feature"><i class="fas fa-music"></i> Müzik Odaları</div>
+                <div class="feature"><i class="fas fa-gift"></i> Ödüllü Aktiviteler</div>
+                <div class="feature"><i class="fas fa-laugh"></i> Eğlenceli Sohbet</div>
+            </div>
+            
+            <button class="join-button" id="join-button">
+                <i class="fab fa-discord"></i> Sunucuya Katıl
+            </button>
+            
+            <div class="rules-section">
+                <div class="section-title">
+                    <i class="fas fa-scroll"></i> TEMEL KURALLAR
+                </div>
+                <ul class="rules-list">
+                    <li><div class="rule-content">Sunucunun dili <span class="rule-highlight">TÜRKÇE</span> dilidir. Başka dillerde konuşmak kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Sunucuda bulunan kullanıcıların yaşları <span class="rule-highlight">17 ve üstü</span> olmalıdır; 17 yaşından küçük kullanıcıların sunucuda bulunması kesinlikle yasaktır. Giren kişilerin sorumluluğu bize ait değildir.</div></li>
+                    <li><div class="rule-content">Sunucuda pedofili, ensest, zoofili, kan, şiddet, tecavüz gibi yasa dışı içeriklerin paylaşımı kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">İntihar eylemlerini desteklemek veya bu konu üzerinden alay edilmesi ya da şaka yapılması kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Başkasının izni olmadan fotoğraf, telefon numarası, adres gibi kişisel bilgilerin paylaşımı kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Sunucuda dini, milli veya ailevi değerlere hakaret etmek, trollük yapmak, ırkçılık ve ayrımcılık içeren söylemler kullanmak yasaktır.</div></li>
+                    <li><div class="rule-content">Nefret söylemi, tehdit, şantaj veya taciz içeren davranışlar hiçbir şekilde kabul edilemez ve yasaktır.</div></li>
+                    <li><div class="rule-content">Her türlü yasaklı maddenin kullanımına teşvik, kullandığını beyan etmek ya da kamerada göstermek veya kullanmak kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Reklam veya link paylaşımı yapmak yasaktır. Biyografinizdeki Discord sunucu davet linkleri reklam kabul edilmektedir. Kaldırmadığınız takdirde cezai işlem uygulanacaktır.</div></li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <div class="section-title">
+                    <i class="fas fa-scroll"></i> SUNUCU KULLANIM KURALLARI
+                </div>
+                <ul class="rules-list">
+                    <li><div class="rule-content">Kanalların belirlenmiş amaçları dışında içerik paylaşmak veya amacı dışında konuşmak kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Spam yapmak, büyük harflerle yazı yazmak veya rahatsızlık verici davranışlarda bulunmak yasaktır.</div></li>
+                    <li><div class="rule-content">Fotoğraflara olumsuz tepki vermek (emoji, mesaj, tepki) kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Arayış kanallarında 18 yaşından küçük arayış yapmak yasaktır.</div></li>
+                    <li><div class="rule-content">Sunucudaki herhangi bir içeriğin izinsiz kopyalanması kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Ücretli içerik alıp-satmak, ücret karşılığı arayış yapmak kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Siyaset ve politika yapmak kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Dini tartışmalar yapmak kesinlikle yasaktır.</div></li>
+                    <li><div class="rule-content">Radikal görüş belirten fikirleri beyan etmek yasaktır.</div></li>
+                    <li><div class="rule-content">Rolleri eksik, hatalı ya da doğru olmayacak şekilde almak kesinlikle yasaktır.</div></li>
+                </ul>
+            </div>
+            
+            <div class="disclaimer">
+                KURUCUYU TANIMANIZ SİZE AYRICALIK TANIMAZ. BAHANE OLARAK BUNU SUNMAMANIZ ÖNEMLE RİCA OLUNUR.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sunucu davet linkini buraya ekleyin
+        const inviteLink = "https://discord.gg/sierra";
+        
+        // Katıl butonu işlevi
+        document.getElementById('join-button').addEventListener('click', function() {
+            window.open(inviteLink, '_blank');
+        });
+    </script>
+</body>
+</html>
